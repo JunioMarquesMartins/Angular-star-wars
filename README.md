@@ -14,7 +14,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Data Base Local
+# Data Base Local
 
 To test the functions of `creating / editing / deleting` a character in a local database please download the
 `json-server`: https://github.com/typicode/json-server
