@@ -1,0 +1,21 @@
+<div class="card-columns wrapper">
+    <div class="card puntero" *ngFor="let idx of card">
+        <div class="card-body">
+            <h5 class="card-title">{{ idx.name }}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <!-- Render People -->
+            <li *ngIf="idx.birth_year" class="list-group-item">Birth year: {{ idx.birth_year }}</li>
+            <li *ngIf="idx.eye_color" class="list-group-item">Eye color: {{ idx.eye_color }}</li>
+            <li *ngIf="idx.hair_color" class="list-group-item">Hair color: {{ idx.hair_color }}</li>
+            <!-- Render Planets -->
+            <li *ngIf="idx.climate" class="list-group-item">Climate: {{ idx.climate }}</li>
+            <li *ngIf="idx.diameter" class="list-group-item">Diameter: {{ idx.diameter }}</li>
+            <li *ngIf="idx.gravity" class="list-group-item">Gravity: {{ idx.gravity }}</li>
+        </ul>
+        <div class="card-footer">
+            <small *ngIf="idx.gender" class="text-muted">Gender: {{ idx.gender }}</small>
+            <small *ngIf="idx.population" class="text-muted">Population: {{ idx.population }}</small>
+        </div>
+    </div>
+</div>

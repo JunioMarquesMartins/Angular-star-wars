@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+.wrapper_home, .wrapper {
+    max-width: 1100px;
+    width: 100%;
+    margin: auto !important;
+}
+.wrapper{
+    margin: 3rem auto !important;
+}
+.loading {
+    position: fixed;
+    top: 150px;
+    left: 50%;
+    z-index: 999;
+    margin-left: -60px;
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+.btn-margin {
+    margin-left: 20px;
+}
+.btn-close {
+    top: 0;
+    right: 0;
+}
+.cursor-pointer {
+    cursor: pointer;
+}

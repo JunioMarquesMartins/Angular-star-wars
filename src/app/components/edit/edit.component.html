@@ -1,0 +1,112 @@
+<app-loading *ngIf="loading"></app-loading>
+<app-alerts *ngIf="dataSuccess"></app-alerts>
+
+<div class="contents wrapper">
+    <h4>Edit Characters: {{characterName}}</h4>
+    <hr>
+      <form id="form-characters" (ngSubmit)="saveCharacter(forma)" #forma="ngForm" novalidate="">
+        <!-- Name -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Name</label>
+          <div class="col-8">
+            <input class="form-control"
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  [(ngModel)]="dataEditCharacters.name"
+                  required
+                  #name="ngModel">
+          </div>
+        </div>
+        <!-- Heigth -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Height</label>
+          <div class="col-md-8">
+            <input class="form-control"
+                  type="text"
+                  placeholder="Height"
+                  name="height"
+                  [(ngModel)]="dataEditCharacters.height"
+                  required>
+          </div>
+        </div>
+        <!-- Mass -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Mass</label>
+          <div class="col-md-8">
+            <input class="form-control"
+                  type="text"
+                  placeholder="Mass"
+                  name="mass"
+                  [(ngModel)]="dataEditCharacters.mass"
+                  required>
+          </div>
+        </div>
+        <!-- Hair Color -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Hair color</label>
+          <div class="col-md-8">
+            <select name="hair_color" class="form-control" ngModel required>
+              <option value="">Select a Color</option>
+              <option *ngFor="let color of dataEditCharacters.hair_color"  [ngValue]="color.name">{{ color.name }}</option>
+            </select>
+          </div>
+        </div>
+        <!-- Skin Color -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Skin color</label>
+          <div class="col-md-8">
+              <input class="form-control"
+                type="text"
+                placeholder="Skin Color"
+                name="skin_color"
+                [(ngModel)]="dataEditCharacters.skin_color"
+                required>
+          </div>
+        </div>
+        <!-- Eye Color -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Eye color</label>
+          <div class="col-md-8">
+            <select name="eye_color" class="form-control" ngModel required>
+              <option value="">Select a Color</option>
+              <option *ngFor="let color of dataEditCharacters.eye_color"  [ngValue]="color.name">{{ color.name }}</option>
+            </select>
+          </div>
+        </div>
+        <!-- Birth Year -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Birth year</label>
+          <div class="col-md-8">
+              <input class="form-control"
+                type="text"
+                placeholder="Birth year"
+                name="birth_year"
+                [(ngModel)]="dataEditCharacters.birth_year"
+                required>
+          </div>
+        </div>
+        <!-- Gender -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Gender</label>
+          <div class="form-check m-3" *ngFor="let gender of dataEditCharacters.gender">
+            <input class="form-check-input" type="radio" name="gender" value="{{gender.name}}" ngModel required>
+            <label class="form-check-label">
+                {{gender.name}}
+            </label>
+          </div>
+        </div>
+        <!-- Button Create -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">&nbsp;</label>
+          <div class="input-group col-md-8">
+            <button routerLink="/myCharacters" class="btn-outline-danger btn btn-outline-primary">
+              Back
+            </button>
+            <button type="submit" [disabled]="!forma.valid" class="btn-margin btn btn-outline-primary">
+              Save 
+            </button>
+          </div>
+        </div>
+      </form>
+</div>

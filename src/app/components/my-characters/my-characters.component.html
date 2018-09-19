@@ -1,0 +1,25 @@
+<router-outlet></router-outlet>
+<app-alerts *ngIf="dataSuccess"></app-alerts>
+<div>
+    <div class="card-columns wrapper">
+        <div class="card puntero position-relative" *ngFor="let people of character">
+            <div class="card-body">
+                <h5 class="card-title">{{ people.name }}</h5>
+                <button (click)="deleteCharacter(people.id)" type="button" class="position-absolute btn-close cursor-pointer"><i class="far fa-times-circle"></i></button>
+            </div>
+            <ul class="list-group list-group-flush">
+                <button class="cursor-pointer" type="button" (click)="editCharacter(people.id)"><i class="fas fa-edit"></i></button>
+                <li class="list-group-item">Birth year: {{ people.birth_year }}</li>
+                <li class="list-group-item">Eye color: {{ people.eye_color }}</li>
+                <li class="list-group-item">Hair color: {{ people.hair_color }}</li>
+            </ul>
+            <div class="card-footer">
+                <small class="text-muted">Gender: {{ people.gender }}</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="character<=0" class="alert alert-warning" role="alert">
+    <strong>There are still no characters created</strong>
+</div>

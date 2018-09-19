@@ -1,0 +1,22 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div>
+    <app-cards [card]="planets"></app-cards>
+</div>
+
+    
+<nav *ngIf="planets.length>0">
+    <ul class="pagination justify-content-center" >
+        <li class="page-item">
+            <a class="page-link" (click)="previousPageGo()" routerLink="/planets">Previous</a>
+        </li>
+        <li class="page-item" *ngFor="let page of pages">
+            <a class="page-link" (click)="getPlanetas(page)" routerLink="/planets">{{page}}</a>
+        </li>
+        <li class="page-item" >
+            <a class="page-link" (click)="nextPageGo()" routerLink="/planets">Next</a>
+        </li>
+    </ul>
+</nav>
+
+

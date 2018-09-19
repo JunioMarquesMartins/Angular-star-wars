@@ -1,0 +1,133 @@
+
+<app-alerts *ngIf="dataSuccess"></app-alerts>
+
+<div class="contents wrapper position-relative">
+    <h4>New Characters</h4>
+    <hr>
+      <form id="form-characters" (ngSubmit)="createCharacter(forma)" #forma="ngForm" novalidate="">
+        <!-- Name -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Name</label>
+          <div class="col-8">
+            <input class="form-control"
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  [(ngModel)]="newCharacters.name"
+                  required
+                  #name="ngModel">
+          </div>
+        </div>
+        <!-- ID -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">ID</label>
+          <div class="col-8">
+            <input class="form-control"
+                  type="number"
+                  placeholder="ID"
+                  name="id"
+                  [(ngModel)]="newCharacters.id"
+                  required>
+          </div>
+        </div>
+        <!-- Heigth -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Height</label>
+          <div class="col-md-8">
+            <input class="form-control"
+                  type="text"
+                  placeholder="Height"
+                  name="height"
+                  [(ngModel)]="newCharacters.height"
+                  required>
+          </div>
+        </div>
+        <!-- Mass -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Mass</label>
+          <div class="col-md-8">
+            <input class="form-control"
+                  type="text"
+                  placeholder="Mass"
+                  name="mass"
+                  [(ngModel)]="newCharacters.mass"
+                  required>
+          </div>
+        </div>
+        <!-- Hair Color -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Hair color</label>
+          <div class="col-md-8">
+            <select name="hair_color" class="form-control" ngModel required>
+              <option value="">Select a Color</option>
+              <option *ngFor="let color of newCharacters.hair_color"  [ngValue]="color.name">{{ color.name }}</option>
+            </select>
+          </div>
+        </div>
+        <!-- Skin Color -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Skin color</label>
+          <div class="col-md-8">
+              <input class="form-control"
+                type="text"
+                placeholder="Skin Color"
+                name="skin_color"
+                [(ngModel)]="newCharacters.skin_color"
+                required>
+          </div>
+        </div>
+        <!-- Eye Color -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Eye color</label>
+          <div class="col-md-8">
+            <select name="eye_color" class="form-control" ngModel required>
+              <option value="">Select a Color</option>
+              <option *ngFor="let color of newCharacters.eye_color"  [ngValue]="color.name">{{ color.name }}</option>
+            </select>
+          </div>
+        </div>
+        <!-- Birth Year -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Birth year</label>
+          <div class="col-md-8">
+              <input class="form-control"
+                type="text"
+                placeholder="Birth year"
+                name="birth_year"
+                [(ngModel)]="newCharacters.birth_year"
+                required>
+          </div>
+        </div>
+        <!-- Gender -->
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Gender</label>
+            <div class="form-check m-3" *ngFor="let gender of newCharacters.gender">
+              <input class="form-check-input" type="radio" name="gender" value="{{gender.name}}" ngModel required>
+              <label class="form-check-label">
+                  {{gender.name}}
+              </label>
+            </div>
+          </div>
+        <!-- homeworld -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Homeworld</label>
+          <div class="col-md-8">
+              <select name="homeworld" class="form-control" ngModel required>
+                <option value="">Select a Homeworld</option>
+                <option *ngFor="let home of newCharacters.homeworld"  [ngValue]="home.name">{{ home.name }}</option>
+              </select>
+          </div>
+        </div>
+        <!-- Button Create -->
+        <div class="form-group row">
+          <label class="col-2 col-form-label">&nbsp;</label>
+          <div class="input-group col-md-8">
+            <button [disabled]="!forma.valid"
+                    type="submit"
+                    class="btn btn-outline-primary">
+              Create
+            </button>
+          </div>
+        </div>
+      </form>
+</div>
