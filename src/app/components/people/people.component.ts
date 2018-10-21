@@ -14,6 +14,7 @@ export class PeopleComponent {
   nextPage: number;
   initPaginator: boolean = true;
   loading:boolean;
+  paginatorPeople: string;
 
   constructor(private swapi:SwapiService, private paginator:PaginatorService) {
     
@@ -21,13 +22,15 @@ export class PeopleComponent {
 
   }
 
-  getPeople(page:number){
+  getPeople(page){
     this.loading = true;
     this.swapi.getPersonajes(page)
     .subscribe( (data:any) =>{
       // Render Planets
       this.people = data.results;
+      this.paginatorPeople = 'people';
       // Render Paginator
+      
       if (this.initPaginator) {this.pages = this.paginator.getNumberPages(data)}
       this.nextPage = this.paginator.getNumberNext(data);
       this.previousPage = this.paginator.getNumberPrevious(data);

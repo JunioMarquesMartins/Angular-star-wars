@@ -1,0 +1,13 @@
+<nav>
+  <ul class="pagination justify-content-center">
+      <li class="page-item">
+          <a class="page-link" href="#" (click)="emmitterChangePreviousPage()" routerLink="/{{paginatorRouter}}">Previous</a>
+      </li>
+      <li class="page-item" *ngFor="let page of paginatorPages" (click)="emmitterChangePage(page)">
+          <a class="page-link" href="#" routerLink="/{{paginatorRouter}}">{{page}}</a>
+      </li>
+      <li class="page-item" >
+          <a class="page-link" href="#" (click)="emmitterChangeNextPage()" routerLink="/{{paginatorRouter   }}">Next</a>
+      </li>
+  </ul>
+</nav>

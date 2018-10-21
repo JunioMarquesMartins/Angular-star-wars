@@ -22,6 +22,7 @@ import { ROUTES } from './app.routes';
 // Services
 import { SwapiService } from "./service/swapi.service";
 import { PaginatorService } from "./service/paginator.service";
+import { PaginatorComponent } from './components/shared/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PaginatorService } from "./service/paginator.service";
     NewCharactersComponent,
     LoadingComponent,
     EditComponent,
-    AlertsComponent
+    AlertsComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,

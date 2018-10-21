@@ -6,17 +6,11 @@
     <app-cards [card]="people"></app-cards>
 </div>
 
+<app-paginator [paginatorData]="people"
+               [paginatorPages]="pages"
+               [paginatorRouter]="paginatorPeople"
+               (changeNextPage)="nextPageGo()"
+               (changePreviousPage)="previousPageGo()"
+               (changePage)="getPeople($event)">
 
-<nav *ngIf="people.length>0">
-    <ul class="pagination justify-content-center" >
-        <li class="page-item">
-            <a class="page-link" href="#" (click)="previousPageGo()" routerLink="/people">Previous</a>
-        </li>
-        <li class="page-item" *ngFor="let page of pages">
-            <a class="page-link" href="#" (click)="getPeople(page)" routerLink="/people">{{page}}</a>
-        </li>
-        <li class="page-item" >
-            <a class="page-link" href="#" (click)="nextPageGo()" routerLink="/people">Next</a>
-        </li>
-    </ul>
-</nav>
+</app-paginator>
