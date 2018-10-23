@@ -1,21 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { FormGroup } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { SwapiService } from "../../service/swapi.service";
+import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent {
+export class EditComponent implements OnInit {
 
   forma:FormGroup;
   characterName: string;
   currentCharacter:number;
   loading:boolean;
   dataSuccess:boolean;
+
+  ngOnInit() {
+    console.log(FormControl);
+    console.log(FormGroup);
+  }
+
+  
 
   dataEditCharacters:Object = {
     "name": "",

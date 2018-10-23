@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { NgForm } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SwapiService } from "../../service/swapi.service";
 import { Router } from "@angular/router";
 
@@ -10,31 +9,40 @@ import { Router } from "@angular/router";
   templateUrl: './new-characters.component.html',
   styleUrls: ['./new-characters.component.css']
 })
-export class NewCharactersComponent {
+export class NewCharactersComponent implements OnInit {
 
   forma:FormGroup;
   selectPlanets: any [] = [];
   dataSuccess:boolean;
 
+  ngOnInit() {
+    this.forma = new FormGroup({
+      'name': new FormControl('', Validators.required),
+      'id': new FormControl('', Validators.required),
+      'height': new FormControl(),
+      'mass': new FormControl(),
+      'hair_color': new FormControl(),
+      'skin_color': new FormControl(),
+      'eye_color': new FormControl(),
+      'birth_year': new FormControl(),
+      'gender': new FormControl('Male'),
+      'planet': new FormControl()
+    });
+  }
+
   newCharacters:Object = {
-    "id": "",
-    "name": "",
-    "height": "",
-    "mass": "",
     "hair_color": [
       {"name": "Black"},
       {"name": "Brown"},
       {"name": "Blue"},
       {"name": "White"}
     ],
-    "skin_color": "",
     "eye_color": [
       {"name": "Black"},
       {"name": "Brown"},
       {"name": "Blue"},
       {"name": "White"}
     ],
-    "birth_year": "",
     "gender": [
       {"name": "Male"},
       {"name": "Female"}
@@ -45,28 +53,12 @@ export class NewCharactersComponent {
 
     this.swapi.getPlanets(1).subscribe( (data:any)=>{
       this.selectPlanets  = data.results;
-      this.newCharacters['homeworld'] = this.selectPlanets;
     })
 
   }
 
-  createCharacter(forma:NgForm){
-
-
-    let sendCharacters:Object = {
-      "id": forma.value.id,
-      "name": forma.value.name,
-      "height": forma.value.height,
-      "mass": forma.value.mass,
-      "hair_color": forma.value.hair_color,
-      "skin_color": forma.value.skin_color,
-      "eye_color": forma.value.eye_color,
-      "birth_year": forma.value.birth_year,
-      "gender": forma.value.gender,
-      "homeworld": forma.value.homeworld
-    }
-
-    this.swapi.createPeople(sendCharacters)
+  createCharacter(){
+    this.swapi.createPeople(this.forma.value)
     .subscribe( (data)=>{
       this.dataSuccess = true;
       this.router.navigate([ 'myCharacters' ])

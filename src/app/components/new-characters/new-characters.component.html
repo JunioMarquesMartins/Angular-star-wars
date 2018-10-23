@@ -4,7 +4,10 @@
 <div class="contents wrapper position-relative">
     <h4>New Characters</h4>
     <hr>
-      <form id="form-characters" (ngSubmit)="createCharacter(forma)" #forma="ngForm" novalidate="">
+      <form [formGroup]="forma"
+            id="form-characters"
+            (ngSubmit)="createCharacter(forma)"
+            novalidate="novalidate">
         <!-- Name -->
         <div class="form-group row">
           <label class="col-2 col-form-label">Name</label>
@@ -12,10 +15,9 @@
             <input class="form-control"
                   type="text"
                   placeholder="Name"
-                  name="name"
-                  [(ngModel)]="newCharacters.name"
+                  formControlName="name"
                   required
-                  #name="ngModel">
+                  >
           </div>
         </div>
         <!-- ID -->
@@ -25,9 +27,9 @@
             <input class="form-control"
                   type="number"
                   placeholder="ID"
-                  name="id"
-                  [(ngModel)]="newCharacters.id"
-                  required>
+                  formControlName="id"
+                  required
+                  >
           </div>
         </div>
         <!-- Heigth -->
@@ -37,9 +39,8 @@
             <input class="form-control"
                   type="text"
                   placeholder="Height"
-                  name="height"
-                  [(ngModel)]="newCharacters.height"
-                  required>
+                  formControlName="height"
+                  >
           </div>
         </div>
         <!-- Mass -->
@@ -49,17 +50,17 @@
             <input class="form-control"
                   type="text"
                   placeholder="Mass"
-                  name="mass"
-                  [(ngModel)]="newCharacters.mass"
-                  required>
+                  formControlName="mass"
+                  >
           </div>
         </div>
         <!-- Hair Color -->
         <div class="form-group row">
           <label class="col-2 col-form-label">Hair color</label>
           <div class="col-md-8">
-            <select name="hair_color" class="form-control" ngModel required>
-              <option value="">Select a Color</option>
+            <select class="form-control"
+                    formControlName="hair_color"
+                    >
               <option *ngFor="let color of newCharacters.hair_color"  [ngValue]="color.name">{{ color.name }}</option>
             </select>
           </div>
@@ -71,18 +72,18 @@
               <input class="form-control"
                 type="text"
                 placeholder="Skin Color"
-                name="skin_color"
-                [(ngModel)]="newCharacters.skin_color"
-                required>
+                formControlName="skin_color"
+                >
           </div>
         </div>
         <!-- Eye Color -->
         <div class="form-group row">
           <label class="col-2 col-form-label">Eye color</label>
           <div class="col-md-8">
-            <select name="eye_color" class="form-control" ngModel required>
-              <option value="">Select a Color</option>
-              <option *ngFor="let color of newCharacters.eye_color"  [ngValue]="color.name">{{ color.name }}</option>
+            <select class="form-control"
+                    formControlName="eye_color"
+                    >
+              <option *ngFor="let eye of newCharacters.eye_color"  [ngValue]="eye.name">{{ eye.name }}</option>
             </select>
           </div>
         </div>
@@ -91,20 +92,24 @@
           <label class="col-2 col-form-label">Birth year</label>
           <div class="col-md-8">
               <input class="form-control"
-                type="text"
-                placeholder="Birth year"
-                name="birth_year"
-                [(ngModel)]="newCharacters.birth_year"
-                required>
+                      type="text"
+                      placeholder="Birth year"
+                      formControlName="birth_year"
+                      >
           </div>
         </div>
         <!-- Gender -->
         <div class="form-group row">
             <label class="col-2 col-form-label">Gender</label>
-            <div class="form-check m-3" *ngFor="let gender of newCharacters.gender">
-              <input class="form-check-input" type="radio" name="gender" value="{{gender.name}}" ngModel required>
+            <div class="form-check m-3" *ngFor="let index of newCharacters.gender">
+              <input class="form-check-input"
+                      type="radio"
+                      formControlName="gender"
+                      name="gender"
+                      value="{{ index.name }}"
+                      >
               <label class="form-check-label">
-                  {{gender.name}}
+                {{ index.name }}
               </label>
             </div>
           </div>
@@ -112,9 +117,10 @@
         <div class="form-group row">
           <label class="col-2 col-form-label">Homeworld</label>
           <div class="col-md-8">
-              <select name="homeworld" class="form-control" ngModel required>
-                <option value="">Select a Homeworld</option>
-                <option *ngFor="let home of newCharacters.homeworld"  [ngValue]="home.name">{{ home.name }}</option>
+              <select class="form-control"
+                      formControlName="planet"
+                      >
+                <option *ngFor="let planet of selectPlanets"  [ngValue]="planet.name">{{ planet.name }}</option>
               </select>
           </div>
         </div>
