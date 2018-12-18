@@ -10,7 +10,7 @@ Run `npm install` to download the dependencies of the project.
 
 ## Step 2 - Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server, default Port:4200 `http://localhost:4200/` for config your port `--port ` to specify a different port.
 
 ## Create Data Base Local to test the functions
 

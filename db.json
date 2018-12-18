@@ -1,0 +1,16 @@
+{
+  "people": [
+    {
+      "birth_year": "10",
+      "eye_color": "Black",
+      "gender": "Female",
+      "hair_color": "Brown",
+      "height": "33",
+      "id": 1,
+      "mass": "aa",
+      "name": "Zhyon",
+      "planet": "Yavin IV",
+      "skin_color": "Yellow"
+    }
+  ]
+}
