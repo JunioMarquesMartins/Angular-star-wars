@@ -11,6 +11,18 @@
       "name": "Zhyon",
       "planet": "Yavin IV",
       "skin_color": "Yellow"
+    },
+    {
+      "name": "test",
+      "id": 22,
+      "height": "33",
+      "mass": "dsad",
+      "hair_color": "Brown",
+      "skin_color": "fdf",
+      "eye_color": "Brown",
+      "birth_year": "fdsf",
+      "gender": "Male",
+      "planet": "Hoth"
     }
   ]
 }
